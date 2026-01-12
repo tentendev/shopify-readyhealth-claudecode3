@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "heading": "Welcome to SD Health",
+        "subheading": "AI-powered genetic testing for personalized health insights",
+        "button_text": "Shop Now"
+      }
+    }
+  },
+  "order": ["hero"]
+}

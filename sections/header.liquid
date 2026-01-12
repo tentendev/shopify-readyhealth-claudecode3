@@ -1,0 +1,69 @@
+<header class="nav_wrap">
+  <div class="nav_contain u-container">
+    <a href="/" class="nav_logo">
+      <span style="font-weight: 700; font-size: 1.5rem; color: var(--color-primary);">{{ shop.name }}</span>
+    </a>
+    <nav class="nav_menu">
+      {% for link in section.settings.menu.links %}
+        <a href="{{ link.url }}" class="nav_link">{{ link.title }}</a>
+      {% endfor %}
+    </nav>
+    <div class="nav_actions">
+      <a href="{{ routes.cart_url }}" class="nav_cart">
+        Cart ({{ cart.item_count }})
+      </a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .nav_wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+  }
+  .nav_contain {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  .nav_menu {
+    display: flex;
+    gap: 2rem;
+  }
+  .nav_link {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .nav_link:hover {
+    color: var(--color-primary);
+  }
+  .nav_cart {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 600;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}

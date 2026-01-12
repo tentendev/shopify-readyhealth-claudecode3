@@ -1,0 +1,28 @@
+<section class="product-section" style="padding: 4rem 1rem; max-width: 1200px; margin: 0 auto;">
+  <div class="product-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
+    <div class="product-images">
+      {% if product.featured_image %}
+        <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.title }}" style="width: 100%; border-radius: 8px;">
+      {% endif %}
+    </div>
+    <div class="product-info">
+      <h1 style="font-size: 2rem; margin-bottom: 1rem;">{{ product.title }}</h1>
+      <p style="font-size: 1.5rem; color: var(--color-primary); margin-bottom: 1rem;">{{ product.price | money }}</p>
+      <div style="margin-bottom: 2rem;">{{ product.description }}</div>
+
+      {% form 'product', product %}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        <button type="submit" style="background: var(--color-primary); color: #fff; border: none; padding: 1rem 2rem; font-size: 1rem; cursor: pointer; border-radius: 4px;">
+          Add to Cart
+        </button>
+      {% endform %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product",
+  "settings": []
+}
+{% endschema %}
