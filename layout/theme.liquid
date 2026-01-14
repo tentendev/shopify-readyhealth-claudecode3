@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{ request.locale.iso_code }}">
 <head>
+
+  {% comment %}
+  for redirection purpose enabling it in the future
+  {% unless request.path contains 'checkouts' or request.path contains 'thank_you' %}
+  <script>window.location.replace("https://sdhealth.tw");</script>
+  {% endunless %}
+  {% endcomment %}
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ page_title }}{% unless page_title contains shop.name %} | {{ shop.name }}{% endunless %}</title>
