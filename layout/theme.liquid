@@ -2,12 +2,13 @@
 <html lang="{{ request.locale.iso_code }}">
 <head>
 
-  {% comment %}
-  for redirection purpose enabling it in the future
-  {% unless request.path contains 'checkouts' or request.path contains 'thank_you' %}
-  <script>window.location.replace("https://sdhealth.tw");</script>
-  {% endunless %}
-  {% endcomment %}
+{% if request.page_type != 'checkout' and request.page_type != 'thank_you' %}
+  <script>
+    if (!window.location.href.includes('sd-health-frontend.vercel.app')) {
+      window.location.replace("https://sd-health-frontend.vercel.app/");
+    }
+  </script>
+{% endif %}
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
